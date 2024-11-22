@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Todo extends Model
 {
@@ -31,5 +32,15 @@ class Todo extends Model
         return [
             'completed' => 'boolean'
         ];
+    }
+
+    /**
+     * Get owner of the todo.
+     *
+     * @return BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }
