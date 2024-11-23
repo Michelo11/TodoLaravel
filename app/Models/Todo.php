@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\TodoCompleted;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -20,6 +21,10 @@ class Todo extends Model
     protected $fillable = [
         'title',
         'completed'
+    ];
+
+    protected $dispatchesEvents = [
+        'updated' => TodoCompleted::class
     ];
 
     /**
